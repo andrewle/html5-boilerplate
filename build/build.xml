@@ -226,21 +226,7 @@
 		<else>
 			<!-- Build a production environment -->
 			<echo message="Building a Production Environment..."/>
-			<antcall target="-rev"/>
-			<antcall target="-clean"/>
-			<antcall target="-copy"/>
-			<antcall target="-usemin"/>
-			<antcall target="-js.all.minify"/>
-			<antcall target="-js.main.concat"/>
-			<antcall target="-js.mylibs.concat"/>
-			<antcall target="-js.scripts.concat"/>
-			<antcall target="-js.delete"/>
-			<antcall target="-strip-console.log"/>
-			<antcall target="-css"/>
-			<antcall target="-html"/>
-			<antcall target="-htmlclean"/>
-			<antcall target="-imagespng"/>
-			<antcall target="-imagesjpg"/>		
+			<antcall target="-build.production" />
 		</else>
 	</if>
   </target>
@@ -302,7 +288,27 @@
 		</else>
 	</if>
   </target>
-	
+
+	<!--
+	*************************************************
+	* BUILD TARGETS                                 *
+	*************************************************
+	-->
+	<target name="-build.production"
+	        depends="-rev,
+	                 -clean,
+	                 -copy,
+	                 -usemin,
+	                 -js.all.minify,
+	                 -js.main.concat,
+	                 -js.mylibs.concat,
+	                 -js.scripts.concat,
+	                 -js.delete,
+	                 -strip-console.log,
+	                 -css,
+	                 -html,
+	                 -htmlclean,
+	                 -imagesjpg" />
 	
 	<!--
 	*************************************************
